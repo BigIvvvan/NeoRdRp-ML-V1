@@ -1,0 +1,9 @@
+include CITATION.cff
+include LICENSE
+include README.md
+include README.ja.md
+recursive-include configs *.yaml
+recursive-include docs *.md
+recursive-include examples *.json
+recursive-include scripts *.py *.sh
+recursive-include src/neordrp_ml_v1/assets *

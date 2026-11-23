@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use NeoRdRp-ML V1, please cite the associated manuscript."
+title: "NeoRdRp-ML: a machine-learning based tool for identification and classification of RNA-dependent RNA polymerase from various RNA viruses"
+type: software
+version: 1.0.0
+date-released: 2026-11-23
+authors:
+  - family-names: "NeoRdRp-ML authors"
+license: MIT
+repository-code: "https://github.com/BigIvvvan/NeoRdRp-ML-V1"
+identifiers:
+  - type: url
+    value: "https://huggingface.co/BigIvvvan/NeoRdRp-ML-V1"

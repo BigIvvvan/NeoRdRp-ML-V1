@@ -1,0 +1,10 @@
+{
+  "protein_id": "E1:L0/Q2N379",
+  "uniprot": "Q2N379",
+  "length": 510,
+  "reference_start": 216,
+  "reference_end": 506,
+  "taxon": "Norovirus Hu/GII.4/Sydney348/97O/AU [viral]",
+  "source": "REF-M structural-domain envelope",
+  "coordinate_system": "1-based closed"
+}

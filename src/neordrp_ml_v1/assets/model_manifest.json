@@ -1,0 +1,8 @@
+{
+  "repo_id": "BigIvvvan/NeoRdRp-ML-V1",
+  "file": "models/neordrp_ml_v1.pt",
+  "sha256": "3c6bbe670a53824a8f2645936d0ca44dbec374ed4ee4f9b5c94c8f606e374c97",
+  "source_checkpoint_sha256": "10b346923f182def33ea88a130afdbb0b9777195bd9cf6a2f0aaf32e2820c1ef",
+  "parameters": 17090558,
+  "family_count": 65
+}

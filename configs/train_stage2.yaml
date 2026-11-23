@@ -1,0 +1,92 @@
+name: neordrp_ml_v1_boundary_refine
+seed: 20261121
+
+data:
+  project_root: .
+  family_dir: data/family_v1
+  research_slice_dir: data/research_slice
+  boundary_labels: data/boundary_weak_labels.parquet
+  esm_sources:
+    - data/features/esmc_600m/family_v1.parquet
+    - data/features/esmc_600m/train_neg.parquet
+    - data/features/esmc_600m/dev_neg.parquet
+    - data/features/esmc_600m/cal_neg.parquet
+  protrek_sources:
+    - data/features/protrek_650m/family_v1.parquet
+    - data/features/protrek_650m/train_neg.parquet
+    - data/features/protrek_650m/dev_neg.parquet
+    - data/features/protrek_650m/cal_neg.parquet
+  require_all_modalities: true
+  drop_missing_modalities: false
+  include_negatives: true
+  family_cohort: true
+  max_length: 2048
+  eval_max_length: 4096
+  embedding_window: 2048
+  allow_legacy_embedding_window: false
+  boundary_sigma_aa: 5.0
+  min_boundary_agreement: 0.50
+
+model:
+  encoder_type: mamba
+  d_model: 384
+  n_layers: 6
+  d_state: 128
+  d_head: 64
+  chunk_size: 64
+  dropout: 0.05
+  share_direction_weights: false
+  gradient_checkpointing: true
+  dt_limit: 0.1
+  esm_dim: 1152
+  protrek_dim: 1280
+  fusion_hidden: 512
+  feature_usage: input
+  boundary_head_hidden: 384
+
+loss:
+  detection_weight: 0.30
+  family_weight: 0.50
+  boundary_weight: 2.0
+  start_weight: 1.0
+  end_weight: 1.0
+  boundary_expected_l1_weight: 0.50
+  detection_pos_weight: 0.3
+  family_label_smoothing: 0.02
+  kd_detection_weight: 0.0
+  kd_feature_weight: 0.05
+  kd_contrastive_weight: 0.02
+  kd_family_weight: 0.0
+  kd_temperature: 2.0
+  kd_contrastive_temperature: 0.07
+
+optim:
+  lr: 0.00005
+  min_lr: 0.000005
+  weight_decay: 0.05
+  betas: [0.9, 0.95]
+  warmup_fraction: 0.01
+  grad_clip: 1.0
+
+train:
+  epochs: 2
+  batch_size: 64
+  grad_accum: 2
+  max_tokens: 131072
+  eval_batch_size: 8
+  eval_max_tokens: 8192
+  amp: bf16
+  log_every: 20
+  save_every: 250
+  patience: 1
+  min_delta: 0.0002
+  num_threads: 8
+  device: cuda
+  output_dir: runs/v1_boundary_refine
+  init_from: runs/v1_stage1/neordrp_ml_v1_stage1_s20261120/last.pt
+  selection:
+    detection_auprc_p10: 0.5
+    detection_recall_fpr_1e_3: 0.5
+    family_macro_f1: 0.5
+    boundary_both_e10: 2.0
+    boundary_minus_mae: 1.0

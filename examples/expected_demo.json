@@ -1,0 +1,12 @@
+{
+  "protein_id": "E1:L0/Q2N379",
+  "sequence_length": 510,
+  "rdrp_probability": 1.0,
+  "rdrp_called": true,
+  "family": "Caliciviridae",
+  "family_probability": 0.9935985803604126,
+  "family_abstained": false,
+  "qstart": 6,
+  "qend": 481,
+  "checkpoint_sha256": "3c6bbe670a53824a8f2645936d0ca44dbec374ed4ee4f9b5c94c8f606e374c97"
+}
