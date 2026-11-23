@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "neordrp-ml-v1-result-review"
+version = "0.1.0"
+description = "Offline review of recorded NeoRdRp-ML V1 interval results"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+neordrp-ml-v1-review = "v1_result_review.cli:main"
+
+[tool.setuptools.package-data]
+v1_result_review = ["demo.json"]
